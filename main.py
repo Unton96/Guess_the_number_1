@@ -1,7 +1,8 @@
 import random
 
 x = random.randint(1, 100)
-print('Добро пожаловать в числовую угадайку!\nВведите число от 1 до 100:\n')
+
+print('Welcome to the Guess the number game!\n Enter a number from 1 to 100:\n')
 
 
 def is_valid(s):
@@ -13,22 +14,22 @@ def is_input_num():
         if is_valid(n):
             return int(n)
         else:
-            print('А может быть все-таки введем целое число от 1 до 100?')
+            print('Could you enter a number from 1 to 100, asshole?!')
 
 def is_close_digit():
     num = is_input_num()
     counter = 0
     while True:
         if num < x:
-            print('Ваше число меньше загаданного, попробуйте еще разок')
+            print('Your number is less than the guessed number, try again')
             return is_close_digit()
         elif num > x:
-            print('Ваше число больше загаданного, попробуйте еще разок')
+            print('Your number is higher than the guessed number, try again')
             return is_close_digit()
         else:
-            print('Вы угадали, поздравляем!', 'Вы отгадали с', counter, 'попыток')
+            print('Congratulations! You guessed it! ', 'You guessed it on the', counter, 'try')
             break
 
 is_close_digit()
 
-print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+print('Thank you for playing in guess the number. See you...')
