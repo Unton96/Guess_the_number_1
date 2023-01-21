@@ -1,8 +1,9 @@
 import random
 
 x = random.randint(1, 100)
+counter = 0
 
-print('Welcome to the Guess the number game!\n Enter a number from 1 to 100:\n')
+print('Welcome to the Guess the number game!\n Enter a number from 1 to 100:')
 
 
 def is_valid(s):
@@ -15,10 +16,11 @@ def is_input_num():
             return int(n)
         else:
             print('Could you enter a number from 1 to 100, asshole?!')
-
+counter = 0
 def is_close_digit():
     num = is_input_num()
-    counter = 0
+    global counter
+    counter += 1
     while True:
         if num < x:
             print('Your number is less than the guessed number, try again')
