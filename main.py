@@ -1,13 +1,14 @@
 import random
 
 x = random.randint(1, 100)
+right_border = 100
 counter = 0
 
-print('Welcome to the Guess the number game!\n Enter a number from 1 to 100:')
+print('Welcome to the Guess the number game!\n Enter a number from 1 to', right_border, ':')
 
 
 def is_valid(s):
-    return s.isdigit() and 1 <= int(s) and int(s) <= 100
+    return s.isdigit() and 1 <= int(s) and int(s) <= right_border
 
 def is_input_num():
     while True:
@@ -15,7 +16,7 @@ def is_input_num():
         if is_valid(n):
             return int(n)
         else:
-            print('Could you enter a number from 1 to 100, asshole?!')
+            print('Could you enter a number from 1 to', right_border, 'asshole?!')
 
 def is_close_digit():
     num = is_input_num()
@@ -38,9 +39,12 @@ is_close_digit()
 def exit_game():
     while True:
         ans_game = input()
+        global right_border
         if exit_game_valid(ans_game) and ans_game == 'yes':
+            print('Enter a biggest number:')
+            right_border = int(input())
             global x, counter
-            x = random.randint(1, 100)
+            x = random.randint(1, right_border)
             counter = 0
             print('Try to guess again, enter the number:')
             is_close_digit()
