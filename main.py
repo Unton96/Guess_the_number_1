@@ -16,7 +16,7 @@ def is_input_num():
             return int(n)
         else:
             print('Could you enter a number from 1 to 100, asshole?!')
-counter = 0
+
 def is_close_digit():
     num = is_input_num()
     global counter
@@ -30,8 +30,34 @@ def is_close_digit():
             return is_close_digit()
         else:
             print('Congratulations! You guessed it! ', 'You guessed it on the', counter, 'try')
+            print('Do you wanna play again?("yes"/"no")')
             break
 
 is_close_digit()
 
-print('Thank you for playing in guess the number. See you...')
+def exit_game():
+    while True:
+        ans_game = input()
+        if exit_game_valid(ans_game) and ans_game == 'yes':
+            global x, counter
+            x = random.randint(1, 100)
+            counter = 0
+            print('Try to guess again, enter the number:')
+            is_close_digit()
+        elif exit_game_valid(ans_game) and ans_game == 'no':
+            print('Thank you for playing in guess the number!')
+            break
+        else:
+            print('Please enter the "yes" or "no"')
+
+def exit_game_valid(n):
+    return n == 'yes' or n == 'no'
+
+exit_game()
+
+
+
+
+
+
+
